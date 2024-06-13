@@ -9,10 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -30,10 +27,11 @@ public class Config {
     }
 
     @BeforeClass(alwaysRun = true)
-    public void init() {
+    @Parameters("browser")
+    public void init(String browser) {
 
         String url = PropertiesProvider.getProperty("url");
-        driver = new DriverProvider().createDriver();
+        driver = new DriverProvider().createDriver(browser);
 
         try {
             ScreenSize screenSize = ScreenProvider.getScreenSize(SCREEN);
@@ -46,7 +44,7 @@ public class Config {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.navigate().to(url);
     }
-    @AfterSuite
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
     }

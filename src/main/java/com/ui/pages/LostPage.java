@@ -14,7 +14,6 @@ import static com.core.providers.Config.getDriver;
 public class LostPage extends HomePage {
     WebDriver driver = getDriver();
     public LostPage(){
-
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,10), this);
     }
 

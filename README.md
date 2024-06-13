@@ -1,12 +1,10 @@
 # TestWorkPetStore
 
-test.person.1992.test@gmail.com
-Dana89298!
-
+mvn test -Dscreen=DESKTOP_S -Dgrid=true   //for Selenium Grid
 
 mvn clean test  
 mvn test 
-mvn test -Dbrowser=firefox 
+mvn test -Dbrowser=firefox
 mvn test -Dbrowser=MicrosoftEdge -Dscreen=DESKTOP_L
 mvn test -Dbrowser=safari -Dscreen=d_m
 mvn test -Dbrowser=safari -Dscreen=D_S
