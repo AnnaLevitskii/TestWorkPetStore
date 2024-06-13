@@ -30,7 +30,6 @@ public class DriverProvider {
     String grid = System.getProperty("grid", null);
     @Parameters("browser")
     public WebDriver createDriver(String browser){
-        System.out.println("#######----------##### " +  browser);
         if (grid != null){
             URL hubUrl = null;
             try {
@@ -44,7 +43,6 @@ public class DriverProvider {
                 return new RemoteWebDriver(hubUrl, options);
             } else if (browser.equals(Browser.FIREFOX.browserName())) {
                 FirefoxOptions options = new FirefoxOptions();
-                System.out.println("#################### FIREFOX");
                 return new RemoteWebDriver(hubUrl, options);
 //                capabilities.setBrowserName(Browser.FIREFOX.browserName());
 //                return new RemoteWebDriver(hubUrl, capabilities);
@@ -55,7 +53,6 @@ public class DriverProvider {
                 capabilities.setBrowserName(Browser.CHROME.browserName());
 //                ChromeOptions options = new ChromeOptions();
 //                return new RemoteWebDriver(hubUrl, options);
-                System.out.println("#################### CHROME");
                 return new RemoteWebDriver(hubUrl, capabilities);
             }
         }else {
